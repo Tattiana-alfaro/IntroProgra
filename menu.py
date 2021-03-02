@@ -61,7 +61,7 @@ def imprimirOpcionesOrdenLista():
 
     texto =  """
     ****************************************
-    Como desea ordenar la lista de usuarios:
+    Como desea ordenar la lista?:
     1. Ascedente
     2. Descendete
     ****************************************
