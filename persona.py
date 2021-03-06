@@ -1,3 +1,11 @@
+import xlrd 
+
+path = "TestData//personas.xlsx"
+wb = xlrd.open_workbook(path)
+sheet = wb.sheet_by_index(0)
+miLista = []
+sortedList = []
+
 class Persona:
     codigo = ""
     nombre = ""
@@ -9,9 +17,16 @@ class Persona:
         self.correo = correo
 
 def cargarListaPersonas():
-    pass
-    # Necesitamos crear un arreglo con la lista de personas.
+    for i in range(sheet.nrows):
+        miLista.append(sheet.cell_value(i, 1))
+    return miLista
 
-def ordenarListaPersonas(orden):
-    cargarListaPersonas()
-    # Aqui va el metodo para ordenar la lista de personas dependiendo de si es ascendente o descendente.
+
+def ordenarListaPersonas(ascendente):
+    #Lista ordenada ascendente
+    if (ascendente):
+        sortedList = sorted(cargarListaPersonas())
+    else:
+        sortedList = sorted(cargarListaPersonas(), reverse=True)    
+    for i in range(len(sortedList)):
+        print(sortedList[i])

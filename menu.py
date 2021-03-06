@@ -1,3 +1,4 @@
+
 import persona
 import os
 
@@ -73,12 +74,19 @@ def manejoMenuPersonas():
     print(menuPersonas())
     opcion = int(input("Seleccione una opcion: "))
 
+    
     if(opcion == 1):
         print(imprimirOpcionesOrdenLista)
+        opcion = int(input(imprimirOpcionesOrdenLista()))
+        if (opcion == 1):
+            persona.ordenarListaPersonas(True)
+        else:
+            persona.ordenarListaPersonas(False)
         # Necesitamos programar la funcionalidad de ordenar lista de personas, esta funcion esta en el modulo de personas.
     
     if(opcion == 2):
-        print("PENDIENTE")
+        persona.cargarListaPersonas()
+        print()
     
     if(opcion == 3):
         print("PENDIENTE")
