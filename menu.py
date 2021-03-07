@@ -85,9 +85,8 @@ def manejoMenuPersonas():
         # Necesitamos programar la funcionalidad de ordenar lista de personas, esta funcion esta en el modulo de personas.
     
     if(opcion == 2):
-        print(persona.cargarListaPersonas())
-        print()
-    
+        persona.imprirListaPersona()
+        
     if(opcion == 3):
         print("PENDIENTE")
     
