@@ -97,12 +97,10 @@ def manejoMenuPersonas():
     if(opcion == 1):
         #Opcion: Ordenar lista de personas
         print(imprimirOpcionesOrdenLista)
-        opcion = int(input(imprimirOpcionesOrdenLista()))
-        if (opcion == 1):
-            persona.ordenarListaPersonas(True)
-        else:
-            persona.ordenarListaPersonas(False)
-    
+        orden = int(input(imprimirOpcionesOrdenLista()))
+        persona.ordenarListaPersonas(orden)
+        imprimirVolveralmMenuAnterior(1)
+        
     if(opcion == 2):
         # Opcion: mprimir lista de personas
         persona.imprirListaPersona()

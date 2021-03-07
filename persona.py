@@ -28,16 +28,19 @@ def imprirListaPersona():
     for Persona in miLista():
         print(Persona.codigo, " - ", Persona.nombre, " - ", Persona.correo)
 
-def ordenarListaPersonas(opcion):
+def ordenarListaPersonas(orden):
     #Lista ordenada ascendente
     miLista = cargarListaPersonas()
-    if (opcion == 1):
-        sortedList = sorted(miLista, str(key=attrgetter(1)))
+    miLista.sort(key=lambda x: x.nombre, reverse=False)
+    if (orden == 1):
+        miLista.sort(key=lambda x: x.nombre, reverse=False)
     else:
-        sortedList = sorted(miLista, key=attrgetter(1), reverse= True)
+        miLista.sort(key=lambda x: x.nombre, reverse=True)
     
-    for Persona in sortedList():
-        print(Persona.codigo, " - ", Persona.nombre, " - ", Persona.correo)    
+    for Persona in miLista:
+        print(Persona.codigo, " - ", Persona.nombre, " - ", Persona.correo)   
+    
+    miLista.clear()
 
 def buscarPersona():
 
@@ -50,10 +53,7 @@ def buscarPersona():
     """
     print(texto)
     opcion = input("Digite una opcion: ")
-    attributo = ""
     miLista = cargarListaPersonas()
-
-
     if (int(opcion) == 1):
         attributo = input("Digite el codigo que desea buscar: ")
         for Persona in miLista:
@@ -86,5 +86,6 @@ def buscarPersona():
     else:
         if encontrado == False:
             print("No se ha encontrado ninguna coincidencia")
+    miLista.clear()
 
     
