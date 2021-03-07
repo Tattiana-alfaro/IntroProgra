@@ -70,6 +70,24 @@ def imprimirOpcionesOrdenLista():
     """
     return texto
 
+
+def imprimirVolveralmMenuAnterior(menuPadre):
+    texto = """
+    Desea volver al menu anterior (Y/N)?: 
+    """
+    print(texto)
+    opcion = input()
+
+    if opcion.capitalize() == "Y":
+        if menuPadre == 1:
+            manejoMenuPersonas()
+        if menuPadre == 2:
+            manejoMenuLibros()
+    else:
+        print("Muchas Gracias!")
+        quit
+
+
 def manejoMenuPersonas():
     
     print(menuPersonas())
@@ -77,21 +95,24 @@ def manejoMenuPersonas():
 
     
     if(opcion == 1):
+        #Opcion: Ordenar lista de personas
         print(imprimirOpcionesOrdenLista)
-        opcion = int(input(imprimirOpcionesOrdenLista()))
-        if (opcion == 1):
-            persona.ordenarListaPersonas(True)
-        else:
-            persona.ordenarListaPersonas(False)
-        # Necesitamos programar la funcionalidad de ordenar lista de personas, esta funcion esta en el modulo de personas.
-    
+        orden = int(input(imprimirOpcionesOrdenLista()))
+        persona.ordenarListaPersonas(orden)
+        imprimirVolveralmMenuAnterior(1)
+        
     if(opcion == 2):
+        # Opcion: mprimir lista de personas
         persona.imprirListaPersona()
+        imprimirVolveralmMenuAnterior(1)
         
     if(opcion == 3):
-        print("PENDIENTE")
+        # Buscar Persona
+        persona.buscarPersona()
+        imprimirVolveralmMenuAnterior(1)
     
     if(opcion == 4):
+        #Opcion: Volver al Menu principal
         manejoMenuPrincipal()
     
     if(opcion == 5):
@@ -108,9 +129,11 @@ def manejoMenuLibros():
     
     if(opcion == 2):
         print("PENDIENTE")
+        imprimirVolveralmMenuAnterior(2)
     
     if(opcion == 3):
         print("PENDIENTE")
+        imprimirVolveralmMenuAnterior(2)
     
     if(opcion == 4):
         manejoMenuPrincipal()
