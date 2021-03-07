@@ -1,5 +1,6 @@
 
 import persona
+import libro
 import os
 
 def menuPrincipal():
@@ -103,7 +104,7 @@ def manejoMenuLibros():
     opcion = int(input("Seleccione una opcion: "))
 
     if(opcion == 1):
-        print("PENDIENTE")
+        libro.imprirListaLibro()
     
     if(opcion == 2):
         print("PENDIENTE")
