@@ -121,16 +121,21 @@ def manejoMenuPersonas():
     
 
 def manejoMenuLibros():
+    os.system('cls')
     print(menuLibros())
     opcion = int(input("Seleccione una opcion: "))
 
+    # Opcion: Ver Lista de libros
     if(opcion == 1):
         libro.imprirListaLibro()
-    
-    if(opcion == 2):
-        print("PENDIENTE")
         imprimirVolveralmMenuAnterior(2)
     
+    # Opcion: Buscar Libros
+    if(opcion == 2):
+        libro.buscarLibro()
+        imprimirVolveralmMenuAnterior(2)
+    
+    # Opcion Ver Prestamo de libros
     if(opcion == 3):
         print("PENDIENTE")
         imprimirVolveralmMenuAnterior(2)
