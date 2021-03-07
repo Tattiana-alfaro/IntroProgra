@@ -18,9 +18,13 @@ class Persona:
 
 def cargarListaPersonas():
     for i in range(sheet.nrows):
-        miLista.append(sheet.cell_value(i, 1))
+        persona = Persona(sheet.cell_value(i, 0), sheet.cell_value(i, 1), sheet.cell_value(i, 2))
+        miLista.append(persona)
     return miLista
 
+def imprirListaPersona():
+    for Persona in cargarListaPersonas():
+        print(Persona.codigo, " - ", Persona.nombre, " - ", Persona.correo)
 
 def ordenarListaPersonas(ascendente):
     #Lista ordenada ascendente
