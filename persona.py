@@ -1,4 +1,5 @@
 import xlrd 
+from operator import itemgetter, attrgetter
 
 path = "TestData//personas.xlsx"
 wb = xlrd.open_workbook(path)
@@ -23,14 +24,67 @@ def cargarListaPersonas():
     return miLista
 
 def imprirListaPersona():
-    for Persona in cargarListaPersonas():
+    miLista = cargarListaPersonas
+    for Persona in miLista():
         print(Persona.codigo, " - ", Persona.nombre, " - ", Persona.correo)
 
-def ordenarListaPersonas(ascendente):
+def ordenarListaPersonas(opcion):
     #Lista ordenada ascendente
-    if (ascendente):
-        sortedList = sorted(cargarListaPersonas())
+    miLista = cargarListaPersonas()
+    if (opcion == 1):
+        sortedList = sorted(miLista, str(key=attrgetter(1)))
     else:
-        sortedList = sorted(cargarListaPersonas(), reverse=True)    
-    for i in range(len(sortedList)):
-        print(sortedList[i])
+        sortedList = sorted(miLista, key=attrgetter(1), reverse= True)
+    
+    for Persona in sortedList():
+        print(Persona.codigo, " - ", Persona.nombre, " - ", Persona.correo)    
+
+def buscarPersona():
+
+    encontrado = False
+    texto = """
+    Por cual atributo le gustaria buscar
+    1. Codigo
+    2. Nombre
+    3. Correo
+    """
+    print(texto)
+    opcion = input("Digite una opcion: ")
+    attributo = ""
+    miLista = cargarListaPersonas()
+
+
+    if (int(opcion) == 1):
+        attributo = input("Digite el codigo que desea buscar: ")
+        for Persona in miLista:
+            if str(attributo.capitalize()) in str(Persona.codigo).capitalize():
+                encontrado = True
+                print("Se ha encontrado el siguiente registro: ")
+                print("CODIGO: ", Persona.codigo) 
+                print("NOMBRE: ", Persona.nombre) 
+                print("CORREO: ", Persona.correo) 
+        
+    if (int(opcion) == 2):
+        attributo = input("Digite el nombre que desea buscar: ")
+        for Persona in miLista:
+            if str(attributo.capitalize()) in str(Persona.nombre).capitalize():
+                encontrado = True
+                print("Se ha encontrado el siguiente registro: ")
+                print("CODIGO: ", Persona.codigo) 
+                print("NOMBRE: ", Persona.nombre) 
+                print("CORREO: ", Persona.correo) 
+
+    if (int(opcion) == 3):
+        attributo = input("Digite el correo que desea buscar: ")
+        for Persona in miLista:
+            if str(attributo.capitalize()) in str(Persona.correo).capitalize():
+                encontrado = True
+                print("Se ha encontrado el siguiente registro: ")
+                print("CODIGO: ", Persona.codigo) 
+                print("NOMBRE: ", Persona.nombre) 
+                print("CORREO: ", Persona.correo) 
+    else:
+        if encontrado == False:
+            print("No se ha encontrado ninguna coincidencia")
+
+    

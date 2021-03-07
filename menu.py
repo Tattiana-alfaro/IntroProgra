@@ -78,7 +78,7 @@ def imprimirVolveralmMenuAnterior(menuPadre):
     print(texto)
     opcion = input()
 
-    if opcion == "Y":
+    if opcion.capitalize() == "Y":
         if menuPadre == 1:
             manejoMenuPersonas()
         if menuPadre == 2:
@@ -110,7 +110,7 @@ def manejoMenuPersonas():
         
     if(opcion == 3):
         # Buscar Persona
-        print("PENDIENTE")
+        persona.buscarPersona()
         imprimirVolveralmMenuAnterior(1)
     
     if(opcion == 4):
