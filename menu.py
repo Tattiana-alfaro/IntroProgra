@@ -140,7 +140,7 @@ def manejoMenuLibros():
     
     # Opcion Ver Prestamo de libros
     if(opcion == 3):
-        print("PENDIENTE")
+        libro.cargardisponibilidad()
         #La siguiente funcion despliega las opciones para volver al menu anterior. 1 - Menu de Personas / 2 - Menu de Libros
         imprimirVolveralmMenuAnterior(2)
     
