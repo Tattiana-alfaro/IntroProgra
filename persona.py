@@ -17,17 +17,20 @@ class Persona:
         self.nombre = nombre
         self.correo = correo
 
+#Funcion para cargar la lista de personas
 def cargarListaPersonas():
     for i in range(sheet.nrows):
         persona = Persona(sheet.cell_value(i, 0), sheet.cell_value(i, 1), sheet.cell_value(i, 2))
         miLista.append(persona)
     return miLista
 
+#Funcion para imprimir la lista de personas
 def imprirListaPersona():
     miLista = cargarListaPersonas
     for Persona in miLista():
         print(Persona.codigo, " - ", Persona.nombre, " - ", Persona.correo)
 
+# Funcion para ordenar lista de personas por NOMBRE
 def ordenarListaPersonas(orden):
     #Lista ordenada ascendente
     miLista = cargarListaPersonas()
@@ -42,6 +45,7 @@ def ordenarListaPersonas(orden):
     
     miLista.clear()
 
+#Funcion para buscar personas.
 def buscarPersona():
 
     encontrado = False
