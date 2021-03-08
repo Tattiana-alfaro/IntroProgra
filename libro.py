@@ -102,5 +102,5 @@ def buscarLibro():
 # Funcion para mostrar disponibilidad de los libros
 def cargardisponibilidad():
     miLista = cargarListaLibros()
-    for i in range(sheet.nrows):
+    for i in range(1,sheet.nrows):
         print(miLista[i].nombre,":",miLista[i].disponibilidad)
