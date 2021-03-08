@@ -18,25 +18,31 @@ class Libro:
         self.genero = genero
         self.autor = autor
 
+# Funcion para cargar lista de libros
 def cargarListaLibros():
     for i in range(sheet.nrows):
         libro = Libro(sheet.cell_value(i, 0), sheet.cell_value(i, 1), sheet.cell_value(i, 2), sheet.cell_value(i, 3))
         miLista.append(libro)
     return miLista
 
+# Funcion para imprimir la lista de libros
 def imprirListaLibro():
     for Libro in cargarListaLibros():
         print(Libro.idLibro, " - ", Libro.nombre, " - ", Libro.genero, " - ", Libro.autor)
 
+#Funcion para buscar libros
 def buscarLibro():
 
     encontrado = False
     texto = """
+    ****************************************
     Por cual atributo le gustaria buscar
+    ****************************************
     1. Codigo Libro
     2. Nombre
     3. Genero
     4. Autor
+    ****************************************
     """
     print(texto)
     opcion = input("Digite una opcion: ")

@@ -70,13 +70,10 @@ def imprimirOpcionesOrdenLista():
     """
     return texto
 
-
+# Funcion para desplegar las opciones de volver al menu anterior
+# Recibe por parametro el valor para determinar si regresa al menu de libro o al menu de personas
 def imprimirVolveralmMenuAnterior(menuPadre):
-    texto = """
-    Desea volver al menu anterior (Y/N)?: 
-    """
-    print(texto)
-    opcion = input()
+    opcion = input("Desea volver al menu anterior (Y/N)?: ")
 
     if opcion.capitalize() == "Y":
         if menuPadre == 1:
@@ -93,28 +90,32 @@ def manejoMenuPersonas():
     print(menuPersonas())
     opcion = int(input("Seleccione una opcion: "))
 
-    
+    #Opcion: Ordenar lista de personas
     if(opcion == 1):
-        #Opcion: Ordenar lista de personas
+        
         print(imprimirOpcionesOrdenLista)
         orden = int(input(imprimirOpcionesOrdenLista()))
         persona.ordenarListaPersonas(orden)
+        #La siguiente funcion despliega las opciones para volver al menu anterior. 1 - Menu de Personas / 2 - Menu de Libros
         imprimirVolveralmMenuAnterior(1)
-        
-    if(opcion == 2):
-        # Opcion: mprimir lista de personas
+
+    # Opcion: Imprimir lista de personas    
+    if(opcion == 2):        
         persona.imprirListaPersona()
+        #La siguiente funcion despliega las opciones para volver al menu anterior. 1 - Menu de Personas / 2 - Menu de Libros
         imprimirVolveralmMenuAnterior(1)
-        
-    if(opcion == 3):
-        # Buscar Persona
+
+    # Opcion: Buscar Persona    
+    if(opcion == 3):        
         persona.buscarPersona()
+        #La siguiente funcion despliega las opciones para volver al menu anterior. 1 - Menu de Personas / 2 - Menu de Libros
         imprimirVolveralmMenuAnterior(1)
     
+    #Opcion: Volver al Menu principal
     if(opcion == 4):
-        #Opcion: Volver al Menu principal
         manejoMenuPrincipal()
     
+    #Opcion: Salir del sistema
     if(opcion == 5):
         print("Muchas Gracias!")
         quit
@@ -128,35 +129,43 @@ def manejoMenuLibros():
     # Opcion: Ver Lista de libros
     if(opcion == 1):
         libro.imprirListaLibro()
+        #La siguiente funcion despliega las opciones para volver al menu anterior. 1 - Menu de Personas / 2 - Menu de Libros
         imprimirVolveralmMenuAnterior(2)
     
     # Opcion: Buscar Libros
     if(opcion == 2):
         libro.buscarLibro()
+        #La siguiente funcion despliega las opciones para volver al menu anterior. 1 - Menu de Personas / 2 - Menu de Libros
         imprimirVolveralmMenuAnterior(2)
     
     # Opcion Ver Prestamo de libros
     if(opcion == 3):
         print("PENDIENTE")
+        #La siguiente funcion despliega las opciones para volver al menu anterior. 1 - Menu de Personas / 2 - Menu de Libros
         imprimirVolveralmMenuAnterior(2)
     
+    #Opcion Volver al menu princpial
     if(opcion == 4):
         manejoMenuPrincipal()
     
+    #Opcion para salir del sistema
     if(opcion == 5):
         print("Muchas Gracias!")
         quit
 
+# Funcion manejar las opciones del menu principal.
 def manejoMenuPrincipal():
     print(menuPrincipal())
     opcion = int(input("Seleccione una opcion: "))
-
+    # Despliega el menu de personas.
     if (opcion == 1):
         manejoMenuPersonas()
 
+    #Despliega el menu de libros.
     if (opcion == 2):
         manejoMenuLibros()
 
+    #Opcion de salir.
     if (opcion == 3):
         print("Muchas Gracias!")
 
