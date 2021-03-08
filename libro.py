@@ -11,17 +11,19 @@ class Libro:
     nombre = ""
     genero = ""
     autor = ""
-
-    def __init__(self, idLibro, nombre, genero, autor):
+    disponibilidad = ""
+    
+    def __init__(self, idLibro, nombre, genero, autor,disponibilidad):
         self.idLibro = idLibro
         self.nombre = nombre
         self.genero = genero
         self.autor = autor
+        self.disponibilidad= disponibilidad
 
 # Funcion para cargar lista de libros
 def cargarListaLibros():
     for i in range(sheet.nrows):
-        libro = Libro(sheet.cell_value(i, 0), sheet.cell_value(i, 1), sheet.cell_value(i, 2), sheet.cell_value(i, 3))
+        libro = Libro(sheet.cell_value(i, 0), sheet.cell_value(i, 1), sheet.cell_value(i, 2), sheet.cell_value(i, 3),sheet.cell_value(i, 4))
         miLista.append(libro)
     return miLista
 
@@ -96,3 +98,9 @@ def buscarLibro():
         if encontrado == False:
             print("No se ha encontrado ninguna coincidencia")
     miLista.clear()
+    
+# Funcion para mostrar disponibilidad de los libros
+def cargardisponibilidad():
+    miLista = cargarListaLibros()
+    for i in range(sheet.nrows):
+        print(miLista[i].nombre,":",miLista[i].disponibilidad)
