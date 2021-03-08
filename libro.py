@@ -104,3 +104,28 @@ def cargardisponibilidad():
     miLista = cargarListaLibros()
     for i in range(1,sheet.nrows):
         print(miLista[i].nombre,":",miLista[i].disponibilidad)
+        
+# Funcion para solicitar libro
+def solicitarlibro(id_by_user):
+ 
+    miLista = cargarListaLibros()
+    
+    for i in range(1, sheet.nrows ):
+
+        if (int(miLista[i].idLibro) == int(id_by_user ) ) :
+
+            if (miLista[i].disponibilidad == "si"):
+                print("libro solicitado exitosamente")
+                file = 'TestData/libros.xlsx'
+                wb2 = openpyxl.load_workbook(filename=file)
+                # Seleciono la Hoja
+                ws = wb2['Sheet1']
+                # Posicion
+                lugar="E"+str(i+1)
+                ws[lugar] = "no" #modifica el excel
+                miLista[i].disponibilidad="no" #modifica la lista de python
+                # Escribirmos en el Fichero
+                wb2.save(file)
+   
+            else:
+                print("Lo sentimos,el libro no está disponible")
