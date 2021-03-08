@@ -50,10 +50,13 @@ def buscarPersona():
 
     encontrado = False
     texto = """
+    ****************************************
     Por cual atributo le gustaria buscar
+    ****************************************
     1. Codigo
     2. Nombre
     3. Correo
+    ****************************************
     """
     print(texto)
     opcion = input("Digite una opcion: ")
