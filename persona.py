@@ -19,6 +19,7 @@ class Persona:
 
 #Funcion para cargar la lista de personas
 def cargarListaPersonas():
+    miLista.clear()
     for i in range(sheet.nrows):
         persona = Persona(sheet.cell_value(i, 0), sheet.cell_value(i, 1), sheet.cell_value(i, 2))
         miLista.append(persona)
