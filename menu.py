@@ -141,7 +141,8 @@ def manejoMenuLibros():
     # Opcion Ver Prestamo de libros
     if(opcion == 3):
         libro.cargardisponibilidad()
-        id_by_user= str(input("Escribir el id del libro"))
+        id_by_user = str(input("Escribir el id del libro: "))
+        libro.solicitarlibro(id_by_user)
         #La siguiente funcion despliega las opciones para volver al menu anterior. 1 - Menu de Personas / 2 - Menu de Libros
         imprimirVolveralmMenuAnterior(2)
     

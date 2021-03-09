@@ -1,8 +1,15 @@
 import xlrd 
+from xlsxwriter import Workbook 
+import xlwt
+import openpyxl
 
 path = "TestData//libros.xlsx"
 wb = xlrd.open_workbook(path)
 sheet = wb.sheet_by_index(0)
+
+wb2 = Workbook(path)
+sheet2 = wb2.add_worksheet()
+
 miLista = []
 
 
@@ -22,15 +29,17 @@ class Libro:
 
 # Funcion para cargar lista de libros
 def cargarListaLibros():
+    miLista.clear()
     for i in range(sheet.nrows):
         libro = Libro(sheet.cell_value(i, 0), sheet.cell_value(i, 1), sheet.cell_value(i, 2), sheet.cell_value(i, 3),sheet.cell_value(i, 4))
         miLista.append(libro)
     return miLista
 
+
 # Funcion para imprimir la lista de libros
 def imprirListaLibro():
     for Libro in cargarListaLibros():
-        print(Libro.idLibro, " - ", Libro.nombre, " - ", Libro.genero, " - ", Libro.autor)
+        print(Libro.idLibro, " - ", Libro.nombre, " - ", Libro.genero, " - ", Libro.autor, Libro.disponibilidad)
 
 #Funcion para buscar libros
 def buscarLibro():
@@ -103,8 +112,11 @@ def buscarLibro():
 def cargardisponibilidad():
     miLista = cargarListaLibros()
     for i in range(1,sheet.nrows):
+
+        print("id", miLista[i].idLibro," ",miLista[i].nombre,":",miLista[i].disponibilidad)
         print(miLista[i].nombre,":",miLista[i].disponibilidad)
         
+
 # Funcion para solicitar libro
 def solicitarlibro(id_by_user):
  
@@ -129,3 +141,5 @@ def solicitarlibro(id_by_user):
    
             else:
                 print("Lo sentimos,el libro no está disponible")
+
+                
